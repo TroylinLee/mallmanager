@@ -44,6 +44,9 @@
         } = res.data
 
         if (status === 200) {
+          // 保存token
+          localStorage.setItem('token', data.token)
+          
           // 登录成功，跳转home
           this.$router.push({ name: 'home' })
           // 提示成功
