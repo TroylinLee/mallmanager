@@ -8,18 +8,36 @@
       <el-button class="loginout" type="info">退出</el-button>
 		</el-header>
 		<el-container>
-			<el-aside
-				class="aside"
-				width="200px"
-			>Aside</el-aside>
+      <Aside :menu-list="menuList"/>
+			
 			<el-main class="main">Main</el-main>
 		</el-container>
 	</el-container>
 </template>
 
 <script>
+  import Aside from './childComps/Aside'
 	export default {
-		name: 'Home',
+    name: 'Home',
+    components: {
+      Aside
+    },
+    data() {
+      return {
+        menuList: []
+      }
+    },
+    created() {
+      this.getMenuList()
+    },
+    methods: {
+      async getMenuList() {
+        const res = await this.$request.get('menus')
+        if (res.data.meta.status !== 200) return this.$message.error(res.data.meta.msg)
+        this.menuList = res.data.data
+        console.log(res)
+      }
+    }
 	}
 </script>
 
@@ -45,13 +63,10 @@
       .middle {
         text-align: center;
       }
-      .loginout {
-
-      }
-		}
-		.aside {
-			background-color: #d3dce6;
-		}
+    }
+    .el-container {
+      height: 100%;
+    }
 		.main {
 			background-color: #eaedf1;
 		}

@@ -28,8 +28,8 @@
 		data () {
 			return {
 				formData: {
-					username: '',
-					password: ''
+					username: 'admin',
+					password: '123456'
 				}
 			};
 		},
@@ -43,17 +43,15 @@
           meta: { msg, status }
         } = res.data
 
-        if (status === 200) {
-          // 保存token
-          localStorage.setItem('token', data.token)
-          
-          // 登录成功，跳转home
-          this.$router.push({ name: 'home' })
-          // 提示成功
-          this.$message.success(msg);
-        } else {
-          this.$message.error(msg);
-        }
+        if (!status === 200) return this.$message.error(msg);
+
+        // 保存token
+        localStorage.setItem('token', data.token)
+        
+        // 登录成功，跳转home
+        this.$router.push('/home')
+        // 提示成功
+        this.$message.success(msg);
 			}
 		}
 	}
