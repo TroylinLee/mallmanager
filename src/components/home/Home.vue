@@ -1,17 +1,13 @@
 <template>
-  <div id="id">
-    <router-view />
-  </div>
+  <div>首页</div>
 </template>
 
 <script>
   export default {
-    name: 'App',
+    name: 'Home',
   }
 </script>
 
 <style lang="scss" scoped>
-  #id {
-    height: 100%;
-  }
+  
 </style>
