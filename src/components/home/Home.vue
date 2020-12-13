@@ -5,7 +5,7 @@
         <img src="@/assets/image/logo.png" alt="无法显示图片">
         <h3>电商后台管理系统</h3>
       </div>
-      <el-button class="loginout" type="info">退出</el-button>
+      <el-button @click="loginOut" type="info">退出</el-button>
 		</el-header>
 		<el-container>
       <Aside :menu-list="menuList"/>
@@ -31,11 +31,21 @@
       this.getMenuList()
     },
     methods: {
+      // 网络请求数据
       async getMenuList() {
         const res = await this.$request.get('menus')
         if (res.data.meta.status !== 200) return this.$message.error(res.data.meta.msg)
         this.menuList = res.data.data
-        console.log(res)
+        // console.log(res)
+      },
+      // 事件处理
+      loginOut() {
+        // 清除token
+        localStorage.clear()
+        // 提示退出成功
+        this.$message.success('退出成功')
+        // 跳转login页面
+        this.$router.push('/login')
       }
     }
 	}
