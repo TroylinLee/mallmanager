@@ -6,6 +6,9 @@ MyHttpServer.install =(Vue) => {
   // 配置请求根路径
   axios.defaults.baseURL = 'http://127.0.0.1:8888/api/private/v1/'
 
+  // 授权API,必须在请求头中使用 Authorization 字段提供token
+  // axios.defaults.headers.common['Authorization'] = window.localStorage.getItem('token')
+
   // 在request拦截器中，展示进度条NProgress.start()
   // 在请求到达服务器之前，会先调用use中的这个回调函数来添加请求头信息
   axios.interceptors.request.use(config => {
