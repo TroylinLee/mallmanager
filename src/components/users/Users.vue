@@ -63,19 +63,67 @@
 					label="角色"
 				>
 				</el-table-column>
-				<el-table-column
-					prop="create_date"
-					label="创建日期"
-				></el-table-column>
-				<el-table-column label="用户状态"></el-table-column>
-				<el-table-column label="操作"></el-table-column>
+				<el-table-column label="创建日期">
+					<!-- 如果单元格内显示的内容不是字符串（文本），
+          需要给被显示的内容外层包裹template -->
+
+					<!-- template内部要用数据 设置slot-scope属性
+          该属性的值要用数据create_time的数据源userList -->
+
+					<!-- slot-scope的值userList起始就是el-table绑定
+          userList.row:数组中的每个对象 -->
+					<template slot-scope="scope">
+						{{scope.row.create_time | fmtDate}}
+					</template>
+				</el-table-column>
+				<el-table-column label="用户状态">
+					<template slot-scope="scope">
+						<el-switch
+							v-model="scope.row.mg_state"
+							active-color="#13ce66"
+							inactive-color="#ff4949"
+							@change="userStateChanged(scope.row)"
+						>
+						</el-switch>
+					</template>
+				</el-table-column>
+				<el-table-column label="操作">
+					<el-row>
+						<el-button
+							type="primary"
+							icon="el-icon-edit"
+							size="mini"
+							circle
+						></el-button>
+						<el-button
+							type="danger"
+							icon="el-icon-delete"
+							size="mini"
+							circle
+						></el-button>
+						<el-tooltip
+							class="item"
+							effect="dark"
+							content="角色分配"
+							placement="top"
+						>
+              <el-button
+                type="warning"
+                icon="el-icon-setting"
+                size="mini"
+                circle
+              >
+						</el-button>
+						</el-tooltip>
+					</el-row>
+				</el-table-column>
 			</el-table>
 		</el-card>
 	</div>
 </template>
 
 <script>
-  import moment from 'moment'
+	import moment from 'moment'
 
 	export default {
 		name: 'Users',
@@ -88,8 +136,14 @@
 				},
 				userList: [], // 用户数据列表
 				total: 0,
+				userInfo: {}
 			}
-    },
+		},
+		filters: {
+			fmtDate (value) {
+				return moment(value * 1000).format('YYYY-MM-DD')
+			}
+		},
 		created () {
 			this.getUserList()
 		},
@@ -103,11 +157,11 @@
 				{
 					this.$message.error(res.meta.msg)
 				}
-        this.userList = res.data.users
-        this.userList.map(item => {
-          return item.create_date = moment(item.create_time * 1000).format('YYYY-MM-DD')
-        })
+				this.userList = res.data.users
 				this.total = res.data.total
+			},
+			userStateChanged (userInfo) {
+
 			}
 		}
 	}
