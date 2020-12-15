@@ -18,7 +18,7 @@
 
 <script>
   import Aside from './childComps/Aside'
-  
+
 	export default {
     name: 'Home',
     components: {
