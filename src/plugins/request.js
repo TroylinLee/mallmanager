@@ -10,7 +10,7 @@ MyHttpServer.install =(Vue) => {
   // axios.defaults.headers.common['Authorization'] = window.localStorage.getItem('token')
 
   // 在request拦截器中，展示进度条NProgress.start()
-  // 在请求到达服务器之前，会先调用use中的这个回调函数来添加请求头信息
+  // 在请求到达服务器之前，先调用use中的这个回调函数来添加请求头信息
   axios.interceptors.request.use(config => {
     // NProgress.start()
     // console.log(config)
