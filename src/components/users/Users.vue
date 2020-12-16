@@ -1,12 +1,8 @@
 <template>
 	<div>
 		<!-- 面包屑导航 -->
-		<el-breadcrumb separator-class="el-icon-arrow-right">
-			<el-breadcrumb-item :to="{ path: '/' }">首页</el-breadcrumb-item>
-			<el-breadcrumb-item>用户管理</el-breadcrumb-item>
-			<el-breadcrumb-item>用户列表</el-breadcrumb-item>
-		</el-breadcrumb>
-
+		<MyBread leave1="用户管理" leave2="用户列表"/>
+    
 		<!-- 卡片视图 -->
 		<el-card>
 			<!-- 搜索 添加用户 -->
@@ -274,10 +270,14 @@
 </template>
 
 <script>
-	import moment from 'moment'
+  import moment from 'moment'
+  import MyBread from '../cuscom/MyBread'
 
 	export default {
-		name: 'Users',
+    name: 'Users',
+    components: {
+      MyBread
+    },
 		data () {
 			// 自定义邮箱规则
 			var checkEmail = (rule, value, callback) => {

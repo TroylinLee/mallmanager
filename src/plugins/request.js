@@ -15,7 +15,9 @@ MyHttpServer.install =(Vue) => {
     // NProgress.start()
     // console.log(config)
     // 为请求头对象，添加token验证的Authorization字段
-    config.headers.Authorization = window.localStorage.getItem('token')
+    if (config.url !== 'login') {
+      config.headers.Authorization = window.localStorage.getItem('token')
+    }
     // 返回配置
     return config
   })
