@@ -10,6 +10,7 @@ const Home = () => import('@/components/home/Home')
 const Users = () => import('@/components/users/Users')
 const Right = () => import('@/components/rights/Right')
 const Roles = () => import('@/components/rights/Roles')
+const GoodsList = () => import('@/components/goods/List')
 
 const routes = [
   {
@@ -40,6 +41,11 @@ const routes = [
         path: '/roles',
         name: 'roles',
         component: Roles
+      },
+      {
+        path: '/goods',
+        name: 'goods',
+        component: GoodsList
       },
     ]
   },
