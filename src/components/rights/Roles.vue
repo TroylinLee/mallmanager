@@ -53,6 +53,10 @@
                 </el-row>
               </el-col>
             </el-row>
+            <!-- 无权限的显示 -->
+            <div class="empty_data">
+              <span v-if="scope.row.children.length === 0">未分配权限</span>
+            </div>
           </template>
         </el-table-column>
         <!-- 索引列 -->
@@ -270,7 +274,7 @@
       },
       async addRole() { // 添加角色
         const { data: res } = await this.$request.post('roles', this.addRoleForm)
-        console.log(res)
+        // console.log(res)
         if (res.meta.status !== 201) return this.$message.error(res.meta.msg)
         this.$message.success('角色创建成功')
         this.addDialogFormVisible = false
@@ -304,17 +308,16 @@
       RightDialogClose() {
         this.defKeys = []
       },
-      async allotRights(roleId) {
+      async allotRights() {
         const keys = [
           ...this.$refs.rightTreeRef.getCheckedKeys(),
           ...this.$refs.rightTreeRef.getHalfCheckedKeys(),
         ]
         // console.log(this.roleId)
-        // join()方法用于把数组中的所有元素中插入一个字符串
-        const idStr = keys.join(',')
+        // join()方法用于把数组中的所有元素中插入字符串，然后整体转换为字符串格式
         const { data: res } = await this.$request.post(
           `roles/${this.roleId}/rights`,
-          { rids: idStr }
+          { rids: keys.join(',') }
         )
         if (res.meta.status !== 200) return this.$message.error(res.meta.msg)
         this.$message.success('权限分配成功')
@@ -359,5 +362,17 @@
   .vcenter {
     display: flex;
     align-items: center;
+  }
+  .empty_data {
+    min-height: 60px;
+    text-align: center;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    span {
+      line-height: 60px;
+      width: 50%;
+      color: #909399;
+    }
   }
 </style>
