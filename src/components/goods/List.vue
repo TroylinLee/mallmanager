@@ -210,8 +210,7 @@
       // 4. 编辑商品
       async editGoodss() {
         const { data: res } = await this.$request.put(
-          `goods/${this.goodsId}`,
-          { params: this.editGoodsForm}
+          `goods/${this.goodsId}`, this.editGoodsForm
         )
         console.log(res)
         this.editDialogFormVisible = false
