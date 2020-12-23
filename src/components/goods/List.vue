@@ -38,7 +38,7 @@
               type="primary"
               icon="el-icon-edit"
               size="mini"
-              @click="showeditGoodss(scope.row)">
+              @click="showeditGoods(scope.row)">
             </el-button>
 						<el-button
               type="danger"
@@ -123,7 +123,7 @@
 					<el-button @click="editDialogFormVisible = false">取 消</el-button>
 					<el-button
 						type="primary"
-						@click="editGoodss"
+						@click="editGoods"
 					>确 定</el-button>
 				</span>
 			</el-dialog>
@@ -208,7 +208,7 @@
 		methods: {
       // 事件处理
       // 4. 编辑商品
-      async editGoodss() {
+      async editGoods() {
         const { data: res } = await this.$request.put(
           `goods/${this.goodsId}`, this.editGoodsForm
         )
@@ -218,7 +218,7 @@
       editDialogClose() {
         this.editGoodsForm = {}
       },
-      async showeditGoodss(goods) {
+      async showeditGoods(goods) {
         const { data: res } = await this.$request.get(`goods/${goods.goods_id}`)
         // console.log(res)
         if (res.meta.status !== 200) return this.$message.error(res.meta.msg)
