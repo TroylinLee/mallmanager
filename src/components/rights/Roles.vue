@@ -1,7 +1,7 @@
 <template>
 	<div class="roles_wrap">
 	  <!-- 面包屑导航 -->
-    <MyBread leave1="权限管理" leave2="角色列表"/>
+    <MyBread level1="权限管理" level2="角色列表"/>
 		<!-- 卡片视图 -->
 		<el-card>
 			<!-- 添加角色按钮 -->

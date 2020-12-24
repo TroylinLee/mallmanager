@@ -1,8 +1,8 @@
 <template>
 	<el-breadcrumb separator-class="el-icon-arrow-right">
 		<el-breadcrumb-item :to="{ path: '/' }">首页</el-breadcrumb-item>
-		<el-breadcrumb-item>{{leave1}}</el-breadcrumb-item>
-		<el-breadcrumb-item>{{leave2}}</el-breadcrumb-item>
+		<el-breadcrumb-item>{{level1}}</el-breadcrumb-item>
+		<el-breadcrumb-item>{{level2}}</el-breadcrumb-item>
 	</el-breadcrumb>
 </template>
 
@@ -10,8 +10,8 @@
 	export default {
     name: 'MyBread',
     props: {
-      leave1: String,
-      leave2: String
+      level1: String,
+      level2: String
     }
 	}
 </script>

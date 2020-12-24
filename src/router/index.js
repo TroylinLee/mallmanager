@@ -14,6 +14,7 @@ const GoodsList = () => import('@/components/goods/List')
 const AddGoods = () => import('@/components/goods/AddGoods')
 const CateParams = () => import('@/components/goods/CateParams')
 const Categories = () => import('@/components/goods/Categories')
+const Orders = () => import('@/components/order/Orders')
 
 const routes = [
   {
@@ -64,6 +65,11 @@ const routes = [
         path: '/categories',
         name: 'categories',
         component: Categories
+      },
+      {
+        path: '/orders',
+        name: 'orders',
+        component: Orders
       },
     ]
   },

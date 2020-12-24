@@ -1,7 +1,7 @@
 <template>
 	<div class="goods_list">
 		<!-- 面包屑 -->
-		<MyBread leave1="商品管理" leave2="商品列表" />
+		<MyBread level1="商品管理" level2="商品列表" />
 
 		<!-- 卡片区域 -->
 		<el-card>

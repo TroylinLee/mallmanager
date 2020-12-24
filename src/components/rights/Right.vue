@@ -1,7 +1,7 @@
 <template>
 	<div class="right">
 		<!-- 面包屑导航 -->
-		<MyBread leave1="权限管理" leave2="权限列表"/>
+		<MyBread level1="权限管理" level2="权限列表"/>
 
 		<!-- 卡片视图 -->
 		<el-card>

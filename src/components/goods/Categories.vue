@@ -1,6 +1,6 @@
 <template>
   <div class="category">
-    <MyBread leave1="商品管理" leave2="商品分类"/>
+    <MyBread level1="商品管理" level2="商品分类"/>
 
     <el-card>
       <!-- 添加分类按钮 -->
@@ -75,7 +75,7 @@
 					:model="addCateForm"
 					ref="addUserFormRef"
 					:rules="cateFormRules"
-					label-width="70px"
+					label-width="100px"
 				>
 					<el-form-item prop="cat_name" label="分类名称">
 						<el-input v-model="addCateForm.cat_name"></el-input>
@@ -104,7 +104,7 @@
 		</el-dialog>
     <!-- 编辑分类对话框 -->
     <el-dialog
-				title="添加分类"
+				title="编辑分类"
 				:visible.sync="editDialogFormVisible"
 				width="50%"
 				@close="editDialogClose"
@@ -113,7 +113,7 @@
 					:model="editCateForm"
 					ref="editUserFormRef"
 					:rules="cateFormRules"
-					label-width="70px"
+					label-width="100px"
 				>
 					<el-form-item prop="cat_name" label="分类名称">
 						<el-input v-model="editCateForm.cat_name"></el-input>
@@ -178,13 +178,13 @@
         // 添加商品相关
         addDialogFormVisible: false,
         addCateForm: {
-          cate_name: '',
+          cat_name: '',
           cat_pid: -1,
           cat_level: -1
         },
         cateFormRules: {
-          cate_name: [
-            { required: true, message: '请输入商品名称', trigger: 'blur' }
+          cat_name: [
+            { required: true, message: '请输入分类名称', trigger: 'blur' }
           ]
         },
         // 级联选择器相关

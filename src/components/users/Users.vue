@@ -1,7 +1,7 @@
 <template>
 	<div>
 		<!-- 面包屑导航 -->
-		<MyBread leave1="用户管理" leave2="用户列表"/>
+		<MyBread level1="用户管理" level2="用户列表"/>
     
 		<!-- 卡片视图 -->
 		<el-card>
@@ -11,7 +11,6 @@
 					<el-input
 						placeholder="请输入内容"
 						v-model="queryInfo.query"
-						class="input-with-select"
 						@input="getUserList"
 						clearable
 						@clear="getUserList"

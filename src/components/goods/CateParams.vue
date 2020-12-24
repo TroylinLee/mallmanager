@@ -1,6 +1,6 @@
 <template>
 	<div class="category_params">
-		<my-bread leave1="商品管理" leave2="参数列表"></my-bread>
+		<my-bread level1="商品管理" level2="参数列表"></my-bread>
 		<el-card>
 			<!-- 提示信息 -->
 			<el-alert title="注意：只允许为第三级分类设置相关参数！" type="warning" show-icon>
