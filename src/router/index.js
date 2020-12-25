@@ -1,21 +1,24 @@
 import Vue from 'vue'
 import VueRouter from 'vue-router'
 
-import { Message } from 'element-ui'
+const Login = () => import(/* webpackChunkName: "Login_Home_Welcome" */ '@/components/login/Login')
+const Home = () => import(/* webpackChunkName: "Login_Home_Welcome" */ '@/components/home/Home')
+const Welcome = () => import(/* webpackChunkName: "Login_Home_Welcome" */ '@/components/home/Welcome')
+
+const Users = () => import(/* webpackChunkName: "Users_Right_Roles" */ '@/components/users/Users')
+const Right = () => import(/* webpackChunkName: "Users_Right_Roles" */ '@/components/rights/Right')
+const Roles = () => import(/* webpackChunkName: "Users_Right_Roles" */ '@/components/rights/Roles')
+
+const GoodsList = () => import(/* webpackChunkName: "GoodsList_AddGoods" */ '@/components/goods/List')
+const AddGoods = () => import(/* webpackChunkName: "GoodsList_AddGoods" */ '@/components/goods/AddGoods')
+
+const CateParams = () => import(/* webpackChunkName: "CateParams_Categories" */ '@/components/goods/CateParams')
+const Categories = () => import(/* webpackChunkName: "CateParams_Categories" */ '@/components/goods/Categories')
+
+const Orders = () => import(/* webpackChunkName: "Orders_Report" */ '@/components/order/Orders')
+const Report = () => import(/* webpackChunkName: "Orders_Report" */ '@/components/report/Report')
 
 Vue.use(VueRouter)
-
-const Login = () => import('@/components/login/Login')
-const Home = () => import('@/components/home/Home')
-const Users = () => import('@/components/users/Users')
-const Right = () => import('@/components/rights/Right')
-const Roles = () => import('@/components/rights/Roles')
-const GoodsList = () => import('@/components/goods/List')
-const AddGoods = () => import('@/components/goods/AddGoods')
-const CateParams = () => import('@/components/goods/CateParams')
-const Categories = () => import('@/components/goods/Categories')
-const Orders = () => import('@/components/order/Orders')
-const Report = () => import('@/components/report/Report')
 
 const routes = [
   {
@@ -31,7 +34,13 @@ const routes = [
     path: '/home',
     name: 'home',
     component: Home,
+    redirect: '/Welcome',
     children: [
+      {
+        path: '/home',
+        name: 'welcome',
+        component: Welcome
+      },
       {
         path: '/users',
         name: 'users',

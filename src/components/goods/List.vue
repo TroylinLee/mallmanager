@@ -29,7 +29,7 @@
 				</el-table-column>
 				<el-table-column label="创建时间" width="140px">
 					<template slot-scope="scope">
-						{{scope.row.add_time | fmtDate}}
+						{{scope.row.add_time | dateFormat}}
 					</template>
 				</el-table-column>
 				<el-table-column label="操作" width="130px">
@@ -133,7 +133,6 @@
 
 <script>
   import MyBread from '../cuscom/MyBread'
-  import moment from 'moment'
 
 	export default {
 		name: 'List',
@@ -199,11 +198,6 @@
 		},
 		created () {
 			this.getGoodsList()
-		},
-		filters: {
-			fmtDate (value) {
-				return moment(value * 1000).format("YYYY-MM-DD hh:mm:ss")
-			}
 		},
 		methods: {
       // 事件处理

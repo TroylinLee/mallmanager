@@ -70,7 +70,7 @@
 					<!-- slot-scope的值userList起始就是el-table绑定
           userList.row:数组中的每个对象 -->
 					<template slot-scope="scope">
-						{{scope.row.create_time | fmtDate}}
+						{{scope.row.create_time | dateFormat}}
 					</template>
 				</el-table-column>
 				<el-table-column label="用户状态">
@@ -269,7 +269,6 @@
 </template>
 
 <script>
-  import moment from 'moment'
   import MyBread from '../cuscom/MyBread'
 
 	export default {
@@ -385,11 +384,6 @@
         userInfo: {}, // 用户信息
         roleList: [], // 所有用户列表
         selectRoleId: '' // 选中角色的ID
-			}
-		},
-		filters: {
-			fmtDate (value) {
-				return moment(value * 1000).format('YYYY-MM-DD')
 			}
 		},
 		created () {

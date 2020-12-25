@@ -30,7 +30,7 @@
 				</el-table-column>
 				<el-table-column label="下单时间">
 					<template slot-scope="scope">
-						{{scope.row.create_time | fmtDate}}
+						{{scope.row.create_time | dateFormat}}
 					</template>
 				</el-table-column>
 				<el-table-column label="操作">
@@ -118,7 +118,6 @@
 <script>
 	import MyBread from '../cuscom/MyBread'
   import cityData from './citydata'
-  import moment from 'moment'
 
 	export default {
 		name: 'Orders',
@@ -161,11 +160,6 @@
 		},
 		created () {
 			this.getOrders()
-    },
-    filters: {
-      fmtDate(v) {
-        return moment(v * 1000).format('YYYY-MM-DD hh:mm:ss')
-      }
     },
 		methods: {
 			// 请求订单列表

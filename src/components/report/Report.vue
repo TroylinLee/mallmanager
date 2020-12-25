@@ -51,6 +51,7 @@
 			}
 		},
 		async mounted () {
+      console.log(1231231)
 			let myChart = echarts.init(document.getElementById('main'))
 			const { data: res } = await this.$request.get('reports/type/1')
 			if (res.meta.status !== 200) return this.$message.error('获取折线图数据失败')

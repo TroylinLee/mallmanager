@@ -135,13 +135,11 @@
 
 <script>
   import MyBread from '../cuscom/MyBread'
-  import TreeTable from 'vue-table-with-tree-grid'
   
   export default {
     name: 'Categories',
     components: {
       MyBread,
-      TreeTable
     },
     data() {
       return {

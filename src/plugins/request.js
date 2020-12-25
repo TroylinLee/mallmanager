@@ -1,5 +1,9 @@
 import axios from 'axios'
 
+// 导入NProgress 包
+import NProgress from 'nprogress'
+import 'nprogress/nprogress.css'
+
 const MyHttpServer = {}
 
 MyHttpServer.install =(Vue) => {
@@ -12,7 +16,7 @@ MyHttpServer.install =(Vue) => {
   // 在request拦截器中，展示进度条NProgress.start()
   // 在请求到达服务器之前，先调用use中的这个回调函数来添加请求头信息
   axios.interceptors.request.use(config => {
-    // NProgress.start()
+    NProgress.start()
     // console.log(config)
     // 为请求头对象，添加token验证的Authorization字段
     if (config.url !== 'login') {
@@ -23,10 +27,10 @@ MyHttpServer.install =(Vue) => {
   })
 
   // response 拦截器中，隐藏进度条 NProgress.done()
-  // axios.interceptors.response.use(config => {
-  //   NProgress.done()
-  //   return config
-  // })
+  axios.interceptors.response.use(config => {
+    NProgress.done()
+    return config
+  })
   // 添加实例方法
   Vue.prototype.$request = axios
 }

@@ -100,9 +100,7 @@
                 type="primary"
                 @click="addGoods">点我-添加商品
               </el-button>
-              <quill-editor
-                v-model="addGoodsForm.goods_introduce"
-              ></quill-editor>
+              <quill-editor v-model="addGoodsForm.goods_introduce"></quill-editor>
             </el-form-item>
           </el-tab-pane>
 				</el-tabs>
@@ -113,20 +111,13 @@
 
 <script>
   import MyBread from '../cuscom/MyBread'
-  
-  import 'quill/dist/quill.core.css'
-  import 'quill/dist/quill.snow.css'
-  import 'quill/dist/quill.bubble.css'
-
-  import { quillEditor } from 'vue-quill-editor'
 
   import _ from 'lodash'
 
 	export default {
 		name: 'AddGoods',
 		components: {
-      MyBread,
-      quillEditor
+      MyBread
 		},
 		data () {
 			return {
@@ -235,10 +226,10 @@
       // 切换tab之前绑定的事件
       beforeTabLeave(activeName, oldActiveName) {
         // 未选中商品分类阻止tab标签跳转
-        // if (oldActiveName === '0' && this.addGoodsForm.goods_cat.length !==3) {
-        //   this.$message.error('请先选择商品分类')
-        //   return false
-        // }
+        if (oldActiveName === '0' && this.addGoodsForm.goods_cat.length !==3) {
+          this.$message.error('请先选择商品分类')
+          return false
+        }
       },
       // 点击不同的tab触发
       async tabClick() {
